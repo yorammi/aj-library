@@ -11,7 +11,7 @@ pipeline {
         stage("Sanity") {
             steps {
                 script {
-                    def buildUserDisplayName = tciBuildUser.getBuildUserDisplayName()
+                    def buildUserDisplayName = ajBuildUser.getBuildUserDisplayName()
                     currentBuild.displayName += " - activated by: ${buildUserDisplayName}"
                 }
             }
