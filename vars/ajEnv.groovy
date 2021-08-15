@@ -12,10 +12,10 @@ def initEnv(Map config=null) {
     {
         deleteWorkspace()
     }
-    tciDefaults.initDefaults()
-    tciBuildUser.initBuildUserEnvVars()
-    if(tciBuildUser.buildStartedByUser()) {
-        def buildUserDisplayName = tciBuildUser.getBuildUserDisplayName()
+    ajDefaults.initDefaults()
+    ajBuildUser.initBuildUserEnvVars()
+    if(ajBuildUser.buildStartedByUser()) {
+        def buildUserDisplayName = ajBuildUser.getBuildUserDisplayName()
         currentBuild.displayName += " {${buildUserDisplayName}}"
     }
 }
