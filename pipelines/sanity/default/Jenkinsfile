@@ -1,0 +1,20 @@
+@Library ("aj-library") _
+
+pipeline {
+    agent { label 'jenkins-jnlp-slave' }
+    options {
+        timestamps()
+        buildDiscarder(logRotator(numToKeepStr: '30'))
+        skipDefaultCheckout()
+    }
+    stages {
+        stage("Sanity") {
+            steps {
+                script {
+                    def buildUserDisplayName = tciBuildUser.getBuildUserDisplayName()
+                    currentBuild.displayName += " - activated by: ${buildUserDisplayName}"
+                }
+            }
+        }
+    }
+}
